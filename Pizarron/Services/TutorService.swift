@@ -58,6 +58,13 @@ final class TutorService: ObservableObject {
                 motivoSinIA = "La IA no está disponible en este momento."
             }
         }
+
+        // Solo para capturas de pantalla del pitch: el simulador no trae Apple
+        // Intelligence, así que forzamos la apariencia de IA disponible.
+        if ProcessInfo.processInfo.arguments.contains("-demoIA") {
+            iaDisponible = true
+            motivoSinIA = ""
+        }
     }
 
     func preguntar(_ texto: String) async {

@@ -2,9 +2,10 @@ import SwiftUI
 
 struct EstudiarView: View {
     @EnvironmentObject var contenido: ContentStore
+    @State private var rutaDemo = NavigationPath()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $rutaDemo) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     VStack(alignment: .leading, spacing: 6) {
@@ -32,6 +33,13 @@ struct EstudiarView: View {
             .navigationDestination(for: Materia.self) { MateriaView(materia: $0) }
             .navigationDestination(for: Tema.self) { TemaView(tema: $0) }
             .toolbar(.hidden, for: .navigationBar)
+            .onAppear {
+                if ProcessInfo.processInfo.arguments.contains("-demoTema"),
+                   rutaDemo.isEmpty,
+                   let tema = contenido.materias.first?.temas.first {
+                    rutaDemo.append(tema)
+                }
+            }
         }
     }
 

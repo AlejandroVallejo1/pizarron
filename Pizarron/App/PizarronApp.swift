@@ -45,7 +45,8 @@ struct HomeView: View {
     // solo con argumentos de lanzamiento, p. ej. desde simctl).
     private static var tabInicial: Int {
         let args = ProcessInfo.processInfo.arguments
-        if args.contains("-demoClase") || args.contains("-demoPodio") { return 1 }
+        if args.contains("-demoClase") || args.contains("-demoPodio") || args.contains("-demoLobby")
+            || args.contains("-videoMaestro") || args.contains("-videoAlumno") { return 1 }
         if args.contains("-demoTutor") { return 2 }
         return 0
     }
@@ -57,7 +58,22 @@ struct HomeView: View {
             clase.agregarEquipoDePractica()
             clase.empezarJuego()
         }
+        if args.contains("-demoLobby"), let tema = contenido.materias.first?.temas.first {
+            clase.iniciarComoMaestro(preguntas: Array(tema.preguntas.prefix(5)), nombre: "Profa. Diana")
+            clase.agregarEquipoDePractica()
+        }
         if args.contains("-demoPodio") { clase.cargarDemoPodio() }
         if args.contains("-demoTutor") { tutor.cargarDemoChat() }
+
+        // Modo video: sesión real por MultipeerConnectivity, automatizada para grabar.
+        if args.contains("-videoMaestro"), let tema = contenido.materias.first?.temas.first {
+            clase.autoMaestro = true
+            clase.iniciarComoMaestro(preguntas: Array(tema.preguntas.prefix(2)),
+                                     nombre: contenido.nombreUsuario.isEmpty ? "Profa. Diana" : contenido.nombreUsuario)
+        }
+        if args.contains("-videoAlumno") {
+            clase.autoAlumno = true
+            clase.unirseComoAlumno(nombre: contenido.nombreUsuario)
+        }
     }
 }
