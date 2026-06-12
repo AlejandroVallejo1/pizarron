@@ -23,6 +23,10 @@ struct QuizView: View {
         .onAppear {
             let args = ProcessInfo.processInfo.arguments
             guard args.contains("-videoQuizIA") || args.contains("-videoEstudiar") else { return }
+            if args.contains("-videoEstudiar") {
+                guard !VideoFlags.autoplayProgramado else { return }
+                VideoFlags.autoplayProgramado = true
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
                 if seleccion == nil {
                     seleccion = preguntas[indice].correcta

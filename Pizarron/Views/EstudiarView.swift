@@ -44,8 +44,8 @@ struct EstudiarView: View {
                    rutaDemo.isEmpty,
                    let materia = contenido.materias.first,
                    let tema = materia.temas.first {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) { rutaDemo.append(materia) }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.8) { rutaDemo.append(tema) }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { rutaDemo.append(materia) }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.2) { rutaDemo.append(tema) }
                 }
             }
         }
@@ -123,7 +123,7 @@ struct TemaView: View {
     @EnvironmentObject var contenido: ContentStore
     @EnvironmentObject var tutor: TutorService
     let tema: Tema
-    @State private var quizActivo: [Pregunta]?
+    @State private var quizActivo: QuizSesion?
     @State private var generando = false
 
     var body: some View {
@@ -147,7 +147,7 @@ struct TemaView: View {
                         .foregroundStyle(Color.pizarra)
                 }
 
-                Button("Practicar este tema") { quizActivo = tema.preguntas.shuffled() }
+                Button("Practicar este tema") { quizActivo = QuizSesion(preguntas: tema.preguntas.shuffled()) }
                     .buttonStyle(BotonPrimario())
 
                 if tutor.iaDisponible {
@@ -173,10 +173,7 @@ struct TemaView: View {
             .padding(20)
         }
         .background(Color.papel)
-        .fullScreenCover(item: Binding(
-            get: { quizActivo.map { QuizSesion(preguntas: $0) } },
-            set: { _ in quizActivo = nil }
-        )) { sesion in
+        .fullScreenCover(item: $quizActivo) { sesion in
             QuizView(preguntas: sesion.preguntas) { aciertos in
                 contenido.registrar(tema: tema, aciertos: aciertos)
             }
@@ -188,7 +185,7 @@ struct TemaView: View {
         Task {
             generando = true
             if let nuevas = await tutor.generarQuiz(tema: tema), !nuevas.isEmpty {
-                quizActivo = nuevas
+                quizActivo = QuizSesion(preguntas: nuevas)
             }
             generando = false
         }
@@ -203,10 +200,20 @@ struct TemaView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 13) { quizActivo = nil }
             DispatchQueue.main.asyncAfter(deadline: .now() + 14.5) { generarConIA() }
         }
-        if args.contains("-videoEstudiar") {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) { quizActivo = tema.preguntas.shuffled() }
+        if args.contains("-videoEstudiar"), !VideoFlags.quizLanzado {
+            VideoFlags.quizLanzado = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                quizActivo = QuizSesion(preguntas: tema.preguntas.shuffled())
+            }
         }
     }
+}
+
+// Candados para que las coreografías de video corran una sola vez por lanzamiento,
+// aunque onAppear se dispare varias veces.
+enum VideoFlags {
+    static var quizLanzado = false
+    static var autoplayProgramado = false
 }
 
 struct QuizSesion: Identifiable {

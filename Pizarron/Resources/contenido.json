@@ -27,6 +27,18 @@
           { "id": "mp4", "texto": "Si 30 de 100 alumnos juegan futbol, ¿qué porcentaje es?", "opciones": ["3%", "13%", "30%", "70%"], "correcta": 2, "explicacion": "30 de cada 100 es exactamente 30%." },
           { "id": "mp5", "texto": "¿Qué fracción equivale al 75%?", "opciones": ["1/4", "3/4", "7/5", "1/2"], "correcta": 1, "explicacion": "75% = 75/100, que simplificado es 3/4." }
         ]
+      },
+      {
+        "id": "mat-geometria",
+        "titulo": "Perímetro y área",
+        "resumen": "El perímetro es la medida del contorno de una figura: se obtiene sumando todos sus lados. El área es la superficie que cubre la figura. En un rectángulo, el área se calcula multiplicando la base por la altura; en un cuadrado, como sus cuatro lados miden lo mismo, basta multiplicar lado por lado. El perímetro se mide en metros o centímetros, y el área en metros o centímetros cuadrados.",
+        "preguntas": [
+          { "id": "mg1", "texto": "¿Cuál es el perímetro de un cuadrado de 5 cm de lado?", "opciones": ["10 cm", "20 cm", "25 cm", "15 cm"], "correcta": 1, "explicacion": "Tiene 4 lados iguales: 5 + 5 + 5 + 5 = 20 cm." },
+          { "id": "mg2", "texto": "¿Cuál es el área de un rectángulo de base 6 m y altura 4 m?", "opciones": ["24 m²", "20 m²", "10 m²", "12 m²"], "correcta": 0, "explicacion": "El área del rectángulo es base por altura: 6 × 4 = 24 m²." },
+          { "id": "mg3", "texto": "El perímetro de una figura es…", "opciones": ["Su superficie", "La medida de su contorno", "Su altura", "Su número de lados"], "correcta": 1, "explicacion": "El perímetro es lo que mide el contorno: la suma de todos los lados." },
+          { "id": "mg4", "texto": "Una cancha mide 10 m de base y 5 m de altura. ¿Cuál es su área?", "opciones": ["15 m²", "50 m²", "30 m²", "25 m²"], "correcta": 1, "explicacion": "Base por altura: 10 × 5 = 50 metros cuadrados." },
+          { "id": "mg5", "texto": "¿Qué figura tiene sus cuatro lados iguales?", "opciones": ["Rectángulo", "Triángulo", "Cuadrado", "Círculo"], "correcta": 2, "explicacion": "El cuadrado tiene cuatro lados iguales y cuatro ángulos rectos." }
+        ]
       }
     ]
   },
@@ -57,6 +69,18 @@
           { "id": "ec3", "texto": "'Había una vez, en un pueblo pequeño…' corresponde al…", "opciones": ["Desenlace", "Nudo", "Inicio", "Final"], "correcta": 2, "explicacion": "El inicio presenta el lugar, el tiempo y los personajes de la historia." },
           { "id": "ec4", "texto": "¿Cuál de estos es un personaje?", "opciones": ["El bosque", "La noche", "El lobo", "El miedo"], "correcta": 2, "explicacion": "Los personajes son quienes realizan las acciones del cuento; el bosque y la noche son el escenario." },
           { "id": "ec5", "texto": "El desenlace de un cuento es donde…", "opciones": ["Se presenta al héroe", "Empieza el conflicto", "Se resuelve el conflicto", "Se describe el lugar"], "correcta": 2, "explicacion": "En el desenlace el problema se resuelve y la historia llega a su final." }
+        ]
+      },
+      {
+        "id": "esp-sinonimos",
+        "titulo": "Sinónimos y antónimos",
+        "resumen": "Los sinónimos son palabras que significan lo mismo o casi lo mismo, como feliz y contento. Los antónimos significan lo contrario, como frío y caliente. Conocerlos hace más rico lo que escribimos y decimos, porque evita repetir siempre las mismas palabras y nos ayuda a expresar mejor las ideas.",
+        "preguntas": [
+          { "id": "es1", "texto": "¿Cuál es un sinónimo de 'contento'?", "opciones": ["Triste", "Feliz", "Enojado", "Cansado"], "correcta": 1, "explicacion": "Feliz y contento significan casi lo mismo: son sinónimos." },
+          { "id": "es2", "texto": "¿Cuál es el antónimo de 'rápido'?", "opciones": ["Veloz", "Ligero", "Lento", "Ágil"], "correcta": 2, "explicacion": "Lento significa lo contrario de rápido: son antónimos." },
+          { "id": "es3", "texto": "'Bonito' y 'hermoso' son…", "opciones": ["Antónimos", "Sinónimos", "Verbos", "Artículos"], "correcta": 1, "explicacion": "Significan casi lo mismo, por eso son sinónimos." },
+          { "id": "es4", "texto": "¿Cuál es el antónimo de 'subir'?", "opciones": ["Trepar", "Escalar", "Bajar", "Saltar"], "correcta": 2, "explicacion": "Bajar es la acción contraria a subir." },
+          { "id": "es5", "texto": "¿Cuál es un sinónimo de 'casa'?", "opciones": ["Vivienda", "Calle", "Escuela", "Parque"], "correcta": 0, "explicacion": "Vivienda y casa nombran el lugar donde vivimos." }
         ]
       }
     ]
@@ -89,6 +113,18 @@
           { "id": "ce4", "texto": "Un animal que solo come plantas se llama…", "opciones": ["Carnívoro", "Herbívoro", "Omnívoro", "Descomponedor"], "correcta": 1, "explicacion": "Los herbívoros, como el venado o el conejo, se alimentan únicamente de plantas." },
           { "id": "ce5", "texto": "Si desaparecen las abejas de un ecosistema, ¿qué pasaría?", "opciones": ["Nada cambiaría", "Habría más flores", "Muchas plantas no se reproducirían", "Habría más miel"], "correcta": 2, "explicacion": "Las abejas polinizan las plantas; sin ellas, muchas no podrían reproducirse y el ecosistema se desequilibra." }
         ]
+      },
+      {
+        "id": "cie-sistemasolar",
+        "titulo": "El sistema solar",
+        "resumen": "El sistema solar está formado por el Sol y los ocho planetas que giran a su alrededor: Mercurio, Venus, Tierra, Marte, Júpiter, Saturno, Urano y Neptuno. El Sol es una estrella, y su luz tarda unos 8 minutos en llegar a la Tierra. Nuestro planeta gira sobre sí mismo, y eso produce el día y la noche; además da una vuelta completa alrededor del Sol que dura un año.",
+        "preguntas": [
+          { "id": "cs1", "texto": "¿Cuántos planetas tiene el sistema solar?", "opciones": ["7", "8", "9", "10"], "correcta": 1, "explicacion": "Son ocho: Mercurio, Venus, Tierra, Marte, Júpiter, Saturno, Urano y Neptuno." },
+          { "id": "cs2", "texto": "¿Qué es el Sol?", "opciones": ["Un planeta", "Una estrella", "Un satélite", "Un cometa"], "correcta": 1, "explicacion": "El Sol es la estrella que da luz y calor a todo el sistema solar." },
+          { "id": "cs3", "texto": "¿Cuál es el planeta más cercano al Sol?", "opciones": ["Venus", "Tierra", "Mercurio", "Marte"], "correcta": 2, "explicacion": "Mercurio es el más cercano al Sol y el más pequeño." },
+          { "id": "cs4", "texto": "El giro de la Tierra sobre sí misma produce…", "opciones": ["Las estaciones", "El día y la noche", "Los eclipses", "Las mareas"], "correcta": 1, "explicacion": "Al girar sobre su eje, una parte recibe luz del Sol y la otra queda a oscuras." },
+          { "id": "cs5", "texto": "¿Cuánto dura la vuelta de la Tierra alrededor del Sol?", "opciones": ["Un día", "Un mes", "Un año", "Una semana"], "correcta": 2, "explicacion": "Ese recorrido completo, llamado traslación, dura un año." }
+        ]
       }
     ]
   },
@@ -119,6 +155,18 @@
           { "id": "hr3", "texto": "¿Cuál era el lema de Emiliano Zapata?", "opciones": ["'Sufragio efectivo, no reelección'", "'Tierra y Libertad'", "'Independencia o muerte'", "'Orden y progreso'"], "correcta": 1, "explicacion": "Zapata luchó por devolver la tierra a los campesinos bajo el lema 'Tierra y Libertad'." },
           { "id": "hr4", "texto": "¿Qué documento importante surgió de la Revolución?", "opciones": ["Los Sentimientos de la Nación", "El Plan de Iguala", "La Constitución de 1917", "Las Leyes de Reforma"], "correcta": 2, "explicacion": "La Constitución de 1917 recogió demandas revolucionarias y es la que nos rige hasta hoy." },
           { "id": "hr5", "texto": "¿Quién luchó en el norte del país al mando de la División del Norte?", "opciones": ["Francisco Villa", "Emiliano Zapata", "Venustiano Carranza", "Álvaro Obregón"], "correcta": 0, "explicacion": "Francisco 'Pancho' Villa encabezó la famosa División del Norte." }
+        ]
+      },
+      {
+        "id": "his-mexicas",
+        "titulo": "Los mexicas",
+        "resumen": "Los mexicas, también llamados aztecas, fundaron Tenochtitlan en 1325 sobre un islote del lago de Texcoco, donde según la leyenda encontraron un águila parada sobre un nopal devorando una serpiente. Fue una de las ciudades más grandes de su tiempo, con calzadas, canales y chinampas, que eran islas artificiales para cultivar. Su caída ante los españoles en 1521 marcó el fin de su imperio.",
+        "preguntas": [
+          { "id": "hm1", "texto": "¿Qué ciudad fundaron los mexicas?", "opciones": ["Teotihuacan", "Tenochtitlan", "Tula", "Monte Albán"], "correcta": 1, "explicacion": "Tenochtitlan, fundada en 1325, fue la capital del imperio mexica." },
+          { "id": "hm2", "texto": "¿Sobre qué lago se construyó Tenochtitlan?", "opciones": ["Chapala", "Pátzcuaro", "Texcoco", "Cuitzeo"], "correcta": 2, "explicacion": "Se construyó sobre un islote del lago de Texcoco." },
+          { "id": "hm3", "texto": "Según la leyenda, ¿qué señal buscaban para fundar su ciudad?", "opciones": ["Un jaguar dormido", "Un águila sobre un nopal", "Una serpiente emplumada", "Un colibrí dorado"], "correcta": 1, "explicacion": "Un águila sobre un nopal devorando una serpiente, la imagen de nuestra bandera." },
+          { "id": "hm4", "texto": "¿Qué eran las chinampas?", "opciones": ["Canoas de guerra", "Islas artificiales para cultivar", "Templos ceremoniales", "Mercados flotantes"], "correcta": 1, "explicacion": "Islas artificiales sobre el lago donde cultivaban maíz, flores y verduras." },
+          { "id": "hm5", "texto": "¿En qué año cayó Tenochtitlan ante los españoles?", "opciones": ["1492", "1521", "1810", "1325"], "correcta": 1, "explicacion": "En 1521, tras un largo sitio encabezado por Hernán Cortés." }
         ]
       }
     ]
