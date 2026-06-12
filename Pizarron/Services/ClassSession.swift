@@ -40,6 +40,11 @@ final class ClassSession: NSObject, ObservableObject {
     private var puntos: [String: Int] = [:]
     private var bots: [String] = []
 
+    // Modo video: automatiza la sesión para grabar la demo sin tocar la pantalla.
+    var autoMaestro = false
+    var autoAlumno = false
+    private var autoEmpezo = false
+
     // MARK: Maestro
 
     func iniciarComoMaestro(preguntas: [Pregunta], nombre: String) {
@@ -156,6 +161,26 @@ final class ClassSession: NSObject, ObservableObject {
 
     private func actualizarJugadores() {
         jugadores = (session?.connectedPeers.map(\.displayName) ?? []) + bots
+        if autoMaestro, !autoEmpezo, fase == .lobby, jugadores.count >= 2 {
+            autoEmpezo = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+                guard let self, self.fase == .lobby else { return }
+                self.empezarJuego()
+            }
+        }
+    }
+
+    private func autoCierraSiCompleto() {
+        guard autoMaestro, fase == .pregunta, !jugadores.isEmpty,
+              respuestasRecibidas.count >= jugadores.count else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            guard let self, self.fase == .pregunta else { return }
+            self.cerrarPregunta()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+                guard let self, self.fase == .resultado else { return }
+                self.siguientePregunta()
+            }
+        }
     }
 
     private func lanzarBots(paraIndice i: Int, pregunta q: Pregunta) {
@@ -174,6 +199,14 @@ final class ClassSession: NSObject, ObservableObject {
             preguntaActual = q; indice = i; total = t
             miRespuesta = nil; ultimaCorrecta = nil
             fase = .pregunta
+            if autoAlumno {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .random(in: 2...4.5)) { [weak self] in
+                    guard let self, self.fase == .pregunta, self.miRespuesta == nil,
+                          let q = self.preguntaActual else { return }
+                    let acierta = Double.random(in: 0...1) < 0.7
+                    self.responder(acierta ? q.correcta : Int.random(in: 0..<q.opciones.count))
+                }
+            }
         case .resultado(let correcta, let tabla):
             ultimaCorrecta = correcta; marcador = tabla
             fase = .resultado
@@ -181,7 +214,10 @@ final class ClassSession: NSObject, ObservableObject {
             marcador = tabla
             fase = .fin
         case .respuesta(let nombre, let opcion):
-            if rol == .maestro { respuestasRecibidas[nombre] = opcion }
+            if rol == .maestro {
+                respuestasRecibidas[nombre] = opcion
+                autoCierraSiCompleto()
+            }
         }
     }
 }
