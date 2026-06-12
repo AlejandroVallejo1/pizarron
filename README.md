@@ -4,6 +4,14 @@ La escuela que funciona sin internet.
 
 En México, 7 de cada 10 escuelas públicas no tienen internet ni computadora. Pizarrón es una app de iOS para primaria y secundaria que funciona sin WiFi, sin señal y sin internet.
 
+## Presentación
+
+Pitch en Keynote, con la demostración en video:
+
+**https://drive.google.com/file/d/18LCybCYcXl0zFmIBEHzr7UVnqOnYuouu/view?usp=sharing**
+
+Descárgalo y ábrelo en Keynote para ver los videos de la demo.
+
 ## Funcionalidades
 
 - **Lecciones y práctica sin conexión.** Las materias y temas de primaria y secundaria viven dentro de la app. El modelo de lenguaje en el dispositivo genera quizzes nuevos a partir de lo que el alumno acaba de estudiar.
