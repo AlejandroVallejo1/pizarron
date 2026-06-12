@@ -4,3 +4,8 @@ xcuserdata/
 DerivedData/
 build/
 *.key
+
+# Recursos de presentación, no del código de la app
+*.mp4
+/pitch-shots/
+/transparentes/

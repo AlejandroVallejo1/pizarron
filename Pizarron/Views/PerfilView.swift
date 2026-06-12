@@ -60,7 +60,7 @@ struct PerfilView: View {
                     }
                     .tarjeta()
 
-                    Text("Hecho para las escuelas donde el internet no llega. 🇲🇽")
+                    Text("Hecho para las escuelas donde el internet no llega.")
                         .font(.caption)
                         .foregroundStyle(Color.tinta.opacity(0.45))
                         .frame(maxWidth: .infinity)
