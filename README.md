@@ -42,3 +42,4 @@ Swift Challenge Fest 2026.
 
 - Alejandro Vallejo
 - Icker Villalón
+- Javier Yahir Juárez Arroyo
