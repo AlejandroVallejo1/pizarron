@@ -39,6 +39,14 @@ struct EstudiarView: View {
                    let tema = contenido.materias.first?.temas.first {
                     rutaDemo.append(tema)
                 }
+                // Modo video: navega por las lecciones con tiempos de persona real.
+                if ProcessInfo.processInfo.arguments.contains("-videoEstudiar"),
+                   rutaDemo.isEmpty,
+                   let materia = contenido.materias.first,
+                   let tema = materia.temas.first {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) { rutaDemo.append(materia) }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.8) { rutaDemo.append(tema) }
+                }
             }
         }
     }
@@ -189,10 +197,15 @@ struct TemaView: View {
     // Modo video: genera dos quizzes seguidos para mostrar que las preguntas
     // siempre son distintas.
     private func coreografiaVideo() {
-        guard ProcessInfo.processInfo.arguments.contains("-videoQuizIA") else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { generarConIA() }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 13) { quizActivo = nil }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 14.5) { generarConIA() }
+        let args = ProcessInfo.processInfo.arguments
+        if args.contains("-videoQuizIA") {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { generarConIA() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 13) { quizActivo = nil }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 14.5) { generarConIA() }
+        }
+        if args.contains("-videoEstudiar") {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) { quizActivo = tema.preguntas.shuffled() }
+        }
     }
 }
 

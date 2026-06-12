@@ -21,11 +21,26 @@ struct QuizView: View {
         }
         .background(Color.papel)
         .onAppear {
-            guard ProcessInfo.processInfo.arguments.contains("-videoQuizIA") else { return }
+            let args = ProcessInfo.processInfo.arguments
+            guard args.contains("-videoQuizIA") || args.contains("-videoEstudiar") else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
                 if seleccion == nil {
                     seleccion = preguntas[indice].correcta
                     aciertos += 1
+                }
+            }
+            if args.contains("-videoEstudiar") {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 7.5) {
+                    if indice + 1 < preguntas.count {
+                        indice += 1
+                        seleccion = nil
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 11) {
+                    if seleccion == nil {
+                        seleccion = preguntas[indice].correcta
+                        aciertos += 1
+                    }
                 }
             }
         }
