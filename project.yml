@@ -1,0 +1,48 @@
+name: Pizarron
+options:
+  bundleIdPrefix: mx.pizarron
+  deploymentTarget:
+    iOS: "26.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    GENERATE_INFOPLIST_FILE: NO
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: W469269D3G
+targets:
+  Pizarron:
+    type: application
+    platform: iOS
+    sources:
+      - Pizarron
+    info:
+      path: Pizarron/Info.plist
+      properties:
+        CFBundleDisplayName: Pizarrón
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        NSLocalNetworkUsageDescription: Pizarrón conecta la clase por red local, sin necesidad de internet.
+        NSBonjourServices: ["_pizarron-cls._tcp", "_pizarron-cls._udp"]
+        NSBluetoothAlwaysUsageDescription: Pizarrón puede usar Bluetooth para conectar la clase cuando no hay WiFi.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: mx.pizarron.Pizarron
+        TARGETED_DEVICE_FAMILY: "1,2"
+    dependencies:
+      - target: PizarronWidget
+  PizarronWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - PizarronWidget
+      - path: Pizarron/Models/Models.swift
+      - path: Pizarron/Resources/contenido.json
+    info:
+      path: PizarronWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Pizarrón
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: mx.pizarron.Pizarron.Widget
