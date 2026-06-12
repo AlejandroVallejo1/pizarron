@@ -1,0 +1,126 @@
+[
+  {
+    "id": "mat",
+    "nombre": "Matemáticas",
+    "icono": "x.squareroot",
+    "temas": [
+      {
+        "id": "mat-fracciones",
+        "titulo": "Fracciones",
+        "resumen": "Una fracción representa partes de un todo. El número de abajo (denominador) dice en cuántas partes iguales se divide el todo, y el de arriba (numerador) cuántas de esas partes tomamos. Dos fracciones son equivalentes cuando representan la misma cantidad, como 1/2 y 2/4. Para comparar fracciones con el mismo denominador, gana la de mayor numerador.",
+        "preguntas": [
+          { "id": "mf1", "texto": "Si una pizza se corta en 8 rebanadas iguales y te comes 3, ¿qué fracción comiste?", "opciones": ["3/8", "8/3", "3/5", "5/8"], "correcta": 0, "explicacion": "Tomaste 3 partes de un total de 8: el numerador es lo que tomas y el denominador el total." },
+          { "id": "mf2", "texto": "¿Cuál fracción es equivalente a 1/2?", "opciones": ["2/3", "3/6", "1/4", "2/5"], "correcta": 1, "explicacion": "3/6 se simplifica dividiendo arriba y abajo entre 3, y queda 1/2." },
+          { "id": "mf3", "texto": "¿Cuál es mayor?", "opciones": ["2/7", "5/7", "3/7", "4/7"], "correcta": 1, "explicacion": "Con el mismo denominador, la fracción mayor es la de mayor numerador: 5/7." },
+          { "id": "mf4", "texto": "¿Cuánto es 1/4 + 2/4?", "opciones": ["3/8", "2/4", "3/4", "1/2"], "correcta": 2, "explicacion": "Con igual denominador solo se suman los numeradores: 1 + 2 = 3, queda 3/4." },
+          { "id": "mf5", "texto": "La mitad de un grupo de 30 alumnos, ¿cuántos son?", "opciones": ["10", "20", "15", "25"], "correcta": 2, "explicacion": "1/2 de 30 es 30 ÷ 2 = 15." }
+        ]
+      },
+      {
+        "id": "mat-porcentajes",
+        "titulo": "Porcentajes",
+        "resumen": "Un porcentaje es una fracción con denominador 100: 25% significa 25 de cada 100. Para calcular el porcentaje de una cantidad, conviene recordar atajos: 50% es la mitad, 25% es la cuarta parte y 10% se obtiene dividiendo entre 10. Los porcentajes se usan en descuentos, calificaciones y estadísticas de la vida diaria.",
+        "preguntas": [
+          { "id": "mp1", "texto": "¿Cuánto es el 50% de 80?", "opciones": ["20", "40", "60", "8"], "correcta": 1, "explicacion": "El 50% es la mitad: 80 ÷ 2 = 40." },
+          { "id": "mp2", "texto": "¿Cuánto es el 10% de 250?", "opciones": ["25", "10", "50", "2.5"], "correcta": 0, "explicacion": "El 10% se calcula dividiendo entre 10: 250 ÷ 10 = 25." },
+          { "id": "mp3", "texto": "Un balón cuesta $200 y tiene 25% de descuento. ¿Cuánto pagas?", "opciones": ["$175", "$150", "$50", "$160"], "correcta": 1, "explicacion": "El 25% de 200 es 50, así que pagas 200 − 50 = $150." },
+          { "id": "mp4", "texto": "Si 30 de 100 alumnos juegan futbol, ¿qué porcentaje es?", "opciones": ["3%", "13%", "30%", "70%"], "correcta": 2, "explicacion": "30 de cada 100 es exactamente 30%." },
+          { "id": "mp5", "texto": "¿Qué fracción equivale al 75%?", "opciones": ["1/4", "3/4", "7/5", "1/2"], "correcta": 1, "explicacion": "75% = 75/100, que simplificado es 3/4." }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "esp",
+    "nombre": "Español",
+    "icono": "text.book.closed",
+    "temas": [
+      {
+        "id": "esp-acentos",
+        "titulo": "Acentuación",
+        "resumen": "Las palabras agudas se acentúan en la última sílaba y llevan tilde si terminan en n, s o vocal (canción, café). Las graves se acentúan en la penúltima sílaba y llevan tilde cuando NO terminan en n, s o vocal (árbol, lápiz). Las esdrújulas se acentúan en la antepenúltima sílaba y siempre llevan tilde (música, pájaro).",
+        "preguntas": [
+          { "id": "ea1", "texto": "¿Cuál palabra es esdrújula?", "opciones": ["Canción", "Música", "Árbol", "Reloj"], "correcta": 1, "explicacion": "Mú-si-ca se acentúa en la antepenúltima sílaba, y las esdrújulas siempre llevan tilde." },
+          { "id": "ea2", "texto": "¿Cuál palabra está escrita correctamente?", "opciones": ["Examen", "Exámen", "éxamen", "Examén"], "correcta": 0, "explicacion": "Examen es grave terminada en n, por eso NO lleva tilde (pero su plural, exámenes, sí: es esdrújula)." },
+          { "id": "ea3", "texto": "Las palabras agudas llevan tilde cuando terminan en…", "opciones": ["Cualquier consonante", "n, s o vocal", "r o l", "Nunca llevan tilde"], "correcta": 1, "explicacion": "Regla de las agudas: tilde solo si terminan en n, s o vocal, como avión o sofá." },
+          { "id": "ea4", "texto": "¿Cuál palabra es grave y lleva tilde?", "opciones": ["Ventana", "Lápiz", "Pared", "Comió"], "correcta": 1, "explicacion": "Lá-piz se acentúa en la penúltima sílaba y termina en z, por eso lleva tilde." },
+          { "id": "ea5", "texto": "¿Dónde lleva el acento (la fuerza de voz) la palabra 'pájaro'?", "opciones": ["En 'ro'", "En 'ja'", "En 'pá'", "No tiene"], "correcta": 2, "explicacion": "Pá-ja-ro: la fuerza está en la antepenúltima sílaba; es esdrújula." }
+        ]
+      },
+      {
+        "id": "esp-cuento",
+        "titulo": "El cuento y sus partes",
+        "resumen": "Un cuento es una narración breve con personajes, lugar y tiempo. Tiene tres partes: el inicio o planteamiento, donde se presenta a los personajes y el escenario; el nudo o desarrollo, donde aparece el problema o conflicto; y el desenlace, donde el conflicto se resuelve. El narrador puede contar la historia en primera o en tercera persona.",
+        "preguntas": [
+          { "id": "ec1", "texto": "¿En qué parte del cuento aparece el problema principal?", "opciones": ["Inicio", "Nudo", "Desenlace", "Título"], "correcta": 1, "explicacion": "El nudo o desarrollo es donde surge el conflicto que mueve la historia." },
+          { "id": "ec2", "texto": "¿Qué hace un narrador en tercera persona?", "opciones": ["Cuenta su propia historia", "Cuenta lo que les pasa a otros", "Solo describe lugares", "Habla con el lector"], "correcta": 1, "explicacion": "El narrador en tercera persona cuenta lo que les sucede a los personajes desde fuera: 'él fue', 'ella dijo'." },
+          { "id": "ec3", "texto": "'Había una vez, en un pueblo pequeño…' corresponde al…", "opciones": ["Desenlace", "Nudo", "Inicio", "Final"], "correcta": 2, "explicacion": "El inicio presenta el lugar, el tiempo y los personajes de la historia." },
+          { "id": "ec4", "texto": "¿Cuál de estos es un personaje?", "opciones": ["El bosque", "La noche", "El lobo", "El miedo"], "correcta": 2, "explicacion": "Los personajes son quienes realizan las acciones del cuento; el bosque y la noche son el escenario." },
+          { "id": "ec5", "texto": "El desenlace de un cuento es donde…", "opciones": ["Se presenta al héroe", "Empieza el conflicto", "Se resuelve el conflicto", "Se describe el lugar"], "correcta": 2, "explicacion": "En el desenlace el problema se resuelve y la historia llega a su final." }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cie",
+    "nombre": "Ciencias",
+    "icono": "leaf",
+    "temas": [
+      {
+        "id": "cie-agua",
+        "titulo": "El ciclo del agua",
+        "resumen": "El agua de mares, ríos y lagos se evapora con el calor del sol y sube como vapor. Al enfriarse en el cielo se condensa y forma nubes. Cuando las gotas pesan demasiado caen como lluvia, nieve o granizo: eso es la precipitación. El agua escurre de regreso a ríos y mares o se filtra al subsuelo, y el ciclo vuelve a empezar. Por eso decimos que el agua no se crea ni se destruye: circula.",
+        "preguntas": [
+          { "id": "ca1", "texto": "¿Cómo se llama el paso del agua líquida a vapor?", "opciones": ["Condensación", "Evaporación", "Precipitación", "Filtración"], "correcta": 1, "explicacion": "Con el calor del sol, el agua líquida se convierte en vapor: eso es la evaporación." },
+          { "id": "ca2", "texto": "Las nubes se forman gracias a la…", "opciones": ["Evaporación", "Precipitación", "Condensación", "Erosión"], "correcta": 2, "explicacion": "El vapor de agua se enfría y se condensa en gotitas que forman las nubes." },
+          { "id": "ca3", "texto": "La lluvia, la nieve y el granizo son formas de…", "opciones": ["Condensación", "Evaporación", "Precipitación", "Transpiración"], "correcta": 2, "explicacion": "Precipitación es toda el agua que cae de las nubes, sin importar su forma." },
+          { "id": "ca4", "texto": "¿Qué provoca principalmente la evaporación del agua?", "opciones": ["El viento", "El calor del sol", "La luna", "Las plantas"], "correcta": 1, "explicacion": "La energía del sol calienta el agua de mares y ríos hasta convertirla en vapor." },
+          { "id": "ca5", "texto": "¿Por qué el ciclo del agua se llama 'ciclo'?", "opciones": ["Porque dura un año", "Porque se repite una y otra vez", "Porque gira como rueda", "Porque tiene 4 pasos exactos"], "correcta": 1, "explicacion": "El agua circula y vuelve a pasar por las mismas etapas una y otra vez, sin fin." }
+        ]
+      },
+      {
+        "id": "cie-ecosistemas",
+        "titulo": "Ecosistemas",
+        "resumen": "Un ecosistema es el conjunto de seres vivos (plantas, animales, hongos) y elementos sin vida (agua, suelo, clima) que se relacionan en un lugar. En la cadena alimenticia, los productores (plantas) fabrican su alimento con la luz del sol; los consumidores se alimentan de otros seres vivos; y los descomponedores regresan los nutrientes al suelo. Si un eslabón desaparece, todo el ecosistema se desequilibra.",
+        "preguntas": [
+          { "id": "ce1", "texto": "En una cadena alimenticia, las plantas son…", "opciones": ["Consumidores", "Productores", "Descomponedores", "Depredadores"], "correcta": 1, "explicacion": "Las plantas producen su propio alimento con la luz del sol mediante la fotosíntesis." },
+          { "id": "ce2", "texto": "¿Cuál es un elemento SIN vida de un ecosistema?", "opciones": ["Hongos", "Suelo", "Insectos", "Aves"], "correcta": 1, "explicacion": "El suelo, el agua y el clima son los factores sin vida (abióticos) del ecosistema." },
+          { "id": "ce3", "texto": "¿Qué hacen los descomponedores?", "opciones": ["Cazan animales", "Producen oxígeno", "Regresan nutrientes al suelo", "Comen solo plantas"], "correcta": 2, "explicacion": "Hongos y bacterias descomponen restos de seres vivos y devuelven los nutrientes al suelo." },
+          { "id": "ce4", "texto": "Un animal que solo come plantas se llama…", "opciones": ["Carnívoro", "Herbívoro", "Omnívoro", "Descomponedor"], "correcta": 1, "explicacion": "Los herbívoros, como el venado o el conejo, se alimentan únicamente de plantas." },
+          { "id": "ce5", "texto": "Si desaparecen las abejas de un ecosistema, ¿qué pasaría?", "opciones": ["Nada cambiaría", "Habría más flores", "Muchas plantas no se reproducirían", "Habría más miel"], "correcta": 2, "explicacion": "Las abejas polinizan las plantas; sin ellas, muchas no podrían reproducirse y el ecosistema se desequilibra." }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "his",
+    "nombre": "Historia",
+    "icono": "building.columns",
+    "temas": [
+      {
+        "id": "his-independencia",
+        "titulo": "Independencia de México",
+        "resumen": "La lucha por la Independencia comenzó la madrugada del 16 de septiembre de 1810, cuando el cura Miguel Hidalgo llamó al pueblo a levantarse en Dolores, Guanajuato: el Grito de Dolores. Tras la muerte de Hidalgo, José María Morelos continuó la lucha y escribió los Sentimientos de la Nación. La guerra terminó en 1821, cuando el Ejército Trigarante, encabezado por Agustín de Iturbide y Vicente Guerrero, entró a la Ciudad de México.",
+        "preguntas": [
+          { "id": "hi1", "texto": "¿Quién inició la lucha por la Independencia en 1810?", "opciones": ["Benito Juárez", "Miguel Hidalgo", "Porfirio Díaz", "Emiliano Zapata"], "correcta": 1, "explicacion": "Miguel Hidalgo dio el Grito de Dolores el 16 de septiembre de 1810." },
+          { "id": "hi2", "texto": "¿En qué año se consumó la Independencia?", "opciones": ["1810", "1821", "1910", "1857"], "correcta": 1, "explicacion": "En 1821, con la entrada del Ejército Trigarante a la Ciudad de México." },
+          { "id": "hi3", "texto": "¿Quién escribió los 'Sentimientos de la Nación'?", "opciones": ["Hidalgo", "Iturbide", "José María Morelos", "Vicente Guerrero"], "correcta": 2, "explicacion": "Morelos presentó los Sentimientos de la Nación en 1813, base de ideas para el México independiente." },
+          { "id": "hi4", "texto": "¿Dónde ocurrió el Grito de Dolores?", "opciones": ["Ciudad de México", "Guadalajara", "Dolores, Guanajuato", "Querétaro"], "correcta": 2, "explicacion": "Hidalgo llamó al pueblo a levantarse en el pueblo de Dolores, en Guanajuato." },
+          { "id": "hi5", "texto": "El Ejército Trigarante fue encabezado por Iturbide y…", "opciones": ["Hidalgo", "Vicente Guerrero", "Morelos", "Allende"], "correcta": 1, "explicacion": "Iturbide y Vicente Guerrero unieron fuerzas y consumaron la Independencia en 1821." }
+        ]
+      },
+      {
+        "id": "his-revolucion",
+        "titulo": "Revolución Mexicana",
+        "resumen": "La Revolución Mexicana estalló el 20 de noviembre de 1910, convocada por Francisco I. Madero contra la dictadura de Porfirio Díaz, quien llevaba más de 30 años en el poder. Líderes como Emiliano Zapata, con su lema 'Tierra y Libertad', y Francisco Villa en el norte, lucharon por la justicia para campesinos y obreros. El movimiento dio origen a la Constitución de 1917, que aún nos rige.",
+        "preguntas": [
+          { "id": "hr1", "texto": "¿En qué fecha inició la Revolución Mexicana?", "opciones": ["16 de septiembre de 1810", "20 de noviembre de 1910", "5 de mayo de 1862", "1 de diciembre de 1917"], "correcta": 1, "explicacion": "Madero convocó al levantamiento el 20 de noviembre de 1910 en el Plan de San Luis." },
+          { "id": "hr2", "texto": "¿Contra qué gobernante estalló la Revolución?", "opciones": ["Santa Anna", "Maximiliano", "Porfirio Díaz", "Iturbide"], "correcta": 2, "explicacion": "Porfirio Díaz llevaba más de 30 años en el poder; a esa época se le llama Porfiriato." },
+          { "id": "hr3", "texto": "¿Cuál era el lema de Emiliano Zapata?", "opciones": ["'Sufragio efectivo, no reelección'", "'Tierra y Libertad'", "'Independencia o muerte'", "'Orden y progreso'"], "correcta": 1, "explicacion": "Zapata luchó por devolver la tierra a los campesinos bajo el lema 'Tierra y Libertad'." },
+          { "id": "hr4", "texto": "¿Qué documento importante surgió de la Revolución?", "opciones": ["Los Sentimientos de la Nación", "El Plan de Iguala", "La Constitución de 1917", "Las Leyes de Reforma"], "correcta": 2, "explicacion": "La Constitución de 1917 recogió demandas revolucionarias y es la que nos rige hasta hoy." },
+          { "id": "hr5", "texto": "¿Quién luchó en el norte del país al mando de la División del Norte?", "opciones": ["Francisco Villa", "Emiliano Zapata", "Venustiano Carranza", "Álvaro Obregón"], "correcta": 0, "explicacion": "Francisco 'Pancho' Villa encabezó la famosa División del Norte." }
+        ]
+      }
+    ]
+  }
+]
