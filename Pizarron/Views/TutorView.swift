@@ -37,13 +37,44 @@ struct TutorView: View {
             }
             .background(Color.papel)
             .toolbar(.hidden, for: .navigationBar)
+            .onAppear { coreografiaVideo() }
+        }
+    }
+
+    // Modo video: escribe preguntas letra por letra con tiempos de persona real.
+    private func coreografiaVideo() {
+        guard ProcessInfo.processInfo.arguments.contains("-videoTutor"), tutor.mensajes.isEmpty else { return }
+        escribirYEnviar("¿Por qué se forman las nubes?", en: 2.5)
+        escribirYEnviar("¿Quién fue Morelos?", en: 16)
+    }
+
+    private func escribirYEnviar(_ pregunta: String, en inicio: Double) {
+        let caracteres = Array(pregunta)
+        for i in caracteres.indices {
+            DispatchQueue.main.asyncAfter(deadline: .now() + inicio + Double(i) * 0.09) {
+                texto = String(caracteres[0...i])
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + inicio + Double(caracteres.count) * 0.09 + 0.8) {
+            enviar()
         }
     }
 
     private var encabezado: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("Tutor")
-                .tituloSerif(34)
+            HStack {
+                Text("Tutor")
+                    .tituloSerif(34)
+                Spacer()
+                if ProcessInfo.processInfo.arguments.contains("-videoTutor") {
+                    Label("Modo avión", systemImage: "airplane")
+                        .font(.system(.caption, design: .rounded, weight: .bold))
+                        .foregroundStyle(Color.pizarra)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 7)
+                        .background(Color.pizarraSuave, in: Capsule())
+                }
+            }
             Text(tutor.iaDisponible
                  ? "Pregunta lo que quieras. Todo se responde en tu dispositivo, sin internet."
                  : "Modo libro: te respondo con los resúmenes de tus temas.")

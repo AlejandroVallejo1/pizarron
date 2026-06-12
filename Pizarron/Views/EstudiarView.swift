@@ -144,13 +144,7 @@ struct TemaView: View {
 
                 if tutor.iaDisponible {
                     Button {
-                        Task {
-                            generando = true
-                            if let nuevas = await tutor.generarQuiz(tema: tema), !nuevas.isEmpty {
-                                quizActivo = nuevas
-                            }
-                            generando = false
-                        }
+                        generarConIA()
                     } label: {
                         HStack {
                             if generando { ProgressView().tint(.pizarra) }
@@ -179,6 +173,26 @@ struct TemaView: View {
                 contenido.registrar(tema: tema, aciertos: aciertos)
             }
         }
+        .onAppear { coreografiaVideo() }
+    }
+
+    private func generarConIA() {
+        Task {
+            generando = true
+            if let nuevas = await tutor.generarQuiz(tema: tema), !nuevas.isEmpty {
+                quizActivo = nuevas
+            }
+            generando = false
+        }
+    }
+
+    // Modo video: genera dos quizzes seguidos para mostrar que las preguntas
+    // siempre son distintas.
+    private func coreografiaVideo() {
+        guard ProcessInfo.processInfo.arguments.contains("-videoQuizIA") else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { generarConIA() }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 13) { quizActivo = nil }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 14.5) { generarConIA() }
     }
 }
 

@@ -20,6 +20,30 @@ struct ClaseView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.papel)
             .toolbar(.hidden, for: .navigationBar)
+            .onAppear { coreografiaVideo() }
+        }
+    }
+
+    // Modo video guiado: recorre las pantallas con los tiempos de una persona
+    // real para grabar la demo. La sesión multipeer es real.
+    private func coreografiaVideo() {
+        let args = ProcessInfo.processInfo.arguments
+        if args.contains("-videoMaestroGuiado"), clase.fase == .inactiva {
+            clase.autoMaestro = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { eligiendoTema = true }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6.5) {
+                eligiendoTema = false
+                if let tema = contenido.materias.first?.temas.first {
+                    clase.iniciarComoMaestro(preguntas: Array(tema.preguntas.prefix(2)),
+                                             nombre: contenido.nombreUsuario.isEmpty ? "Profa. Diana" : contenido.nombreUsuario)
+                }
+            }
+        }
+        if args.contains("-videoAlumnoGuiado"), clase.fase == .inactiva {
+            clase.autoAlumno = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + .random(in: 4.5...7)) {
+                clase.unirseComoAlumno(nombre: contenido.nombreUsuario)
+            }
         }
     }
 

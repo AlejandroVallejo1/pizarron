@@ -46,8 +46,9 @@ struct HomeView: View {
     private static var tabInicial: Int {
         let args = ProcessInfo.processInfo.arguments
         if args.contains("-demoClase") || args.contains("-demoPodio") || args.contains("-demoLobby")
-            || args.contains("-videoMaestro") || args.contains("-videoAlumno") { return 1 }
-        if args.contains("-demoTutor") { return 2 }
+            || args.contains("-videoMaestro") || args.contains("-videoAlumno")
+            || args.contains("-videoMaestroGuiado") || args.contains("-videoAlumnoGuiado") { return 1 }
+        if args.contains("-demoTutor") || args.contains("-videoTutor") { return 2 }
         return 0
     }
 

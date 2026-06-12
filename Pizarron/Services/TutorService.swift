@@ -59,12 +59,16 @@ final class TutorService: ObservableObject {
             }
         }
 
-        // Solo para capturas de pantalla del pitch: el simulador no trae Apple
+        // Solo para capturas y videos del pitch: el simulador no trae Apple
         // Intelligence, así que forzamos la apariencia de IA disponible.
-        if ProcessInfo.processInfo.arguments.contains("-demoIA") {
+        let args = ProcessInfo.processInfo.arguments
+        if args.contains("-demoIA") || args.contains("-videoQuizIA") || args.contains("-videoTutor") {
             iaDisponible = true
             motivoSinIA = ""
         }
+        // En el video del tutor el simulador no puede generar de verdad:
+        // responde siempre con el contenido del libro.
+        if args.contains("-videoTutor") { session = nil }
     }
 
     func preguntar(_ texto: String) async {
@@ -73,6 +77,11 @@ final class TutorService: ObservableObject {
         mensajes.append(MensajeChat(esUsuario: true, texto: limpio))
         ocupado = true
         defer { ocupado = false }
+
+        // Pausa de "pensando" para los videos del pitch.
+        if ProcessInfo.processInfo.arguments.contains("-videoTutor") {
+            try? await Task.sleep(nanoseconds: 2_200_000_000)
+        }
 
         if let session {
             do {
@@ -99,6 +108,16 @@ final class TutorService: ObservableObject {
 
     /// Genera un quiz nuevo con el modelo on-device; nil si no hay IA o falla.
     func generarQuiz(tema: Tema) async -> [Pregunta]? {
+        // Video del pitch: el simulador no tiene el modelo, así que se muestran
+        // dos rondas precargadas con preguntas distintas (en dispositivo real
+        // este camino no se usa y la generación es genuina).
+        if ProcessInfo.processInfo.arguments.contains("-videoQuizIA") {
+            ocupado = true
+            defer { ocupado = false }
+            try? await Task.sleep(nanoseconds: 2_600_000_000)
+            demoQuizRonda += 1
+            return Self.quizDemo(ronda: demoQuizRonda)
+        }
         guard let session else { return nil }
         ocupado = true
         defer { ocupado = false }
@@ -122,6 +141,35 @@ final class TutorService: ObservableObject {
         }
     }
 
+    private var demoQuizRonda = 0
+
+    private static func quizDemo(ronda: Int) -> [Pregunta] {
+        if ronda % 2 == 1 {
+            return [
+                Pregunta(id: "vd1a", texto: "En un grupo de 20 alumnos, 5 llevan lentes. ¿Qué fracción del grupo lleva lentes?",
+                         opciones: ["1/4", "1/5", "4/5", "1/2"], correcta: 0,
+                         explicacion: "5 de 20 es 5/20, que simplificado es 1/4."),
+                Pregunta(id: "vd1b", texto: "¿Cuál fracción es mayor que 1/2?",
+                         opciones: ["3/8", "2/5", "5/8", "1/3"], correcta: 2,
+                         explicacion: "5/8 pasa de la mitad, porque la mitad de 8 es 4 y aquí tomamos 5."),
+                Pregunta(id: "vd1c", texto: "Luis comió 2/6 de un pastel y Ana 1/6. ¿Cuánto comieron juntos?",
+                         opciones: ["3/6", "2/12", "3/12", "1/6"], correcta: 0,
+                         explicacion: "Con igual denominador se suman los numeradores y queda 3/6, o sea la mitad.")
+            ]
+        }
+        return [
+            Pregunta(id: "vd2a", texto: "Una cuerda de 12 metros se corta en 3 partes iguales. ¿Qué fracción del total es cada parte?",
+                     opciones: ["1/3", "1/4", "3/12", "1/12"], correcta: 0,
+                     explicacion: "Cada parte es una de tres partes iguales, es decir 1/3."),
+            Pregunta(id: "vd2b", texto: "¿Qué fracción de una hora son 15 minutos?",
+                     opciones: ["1/4", "1/2", "1/3", "15/30"], correcta: 0,
+                     explicacion: "15 de 60 minutos es 15/60, que simplificado es 1/4."),
+            Pregunta(id: "vd2c", texto: "¿Cuál fracción es equivalente a 2/3?",
+                     opciones: ["4/6", "3/2", "2/6", "6/3"], correcta: 0,
+                     explicacion: "Multiplicando arriba y abajo por 2, 2/3 se convierte en 4/6.")
+        ]
+    }
+
     /// Conversación precargada para capturas de pantalla.
     func cargarDemoChat() {
         mensajes = [
@@ -138,7 +186,9 @@ final class TutorService: ObservableObject {
 
     /// Modo sin IA: responde con el resumen del tema que más se parezca a la pregunta.
     private func respuestaDeLibro(para texto: String) -> String {
-        let palabras = Set(texto.lowercased().split(separator: " ").map(String.init).filter { $0.count > 3 })
+        let palabras = Set(texto.lowercased()
+            .components(separatedBy: CharacterSet.alphanumerics.inverted)
+            .filter { $0.count > 3 })
         var mejor: (tema: Tema, coincidencias: Int)?
         for tema in materias.flatMap(\.temas) {
             let contenido = (tema.titulo + " " + tema.resumen).lowercased()

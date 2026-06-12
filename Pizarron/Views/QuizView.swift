@@ -20,6 +20,15 @@ struct QuizView: View {
             }
         }
         .background(Color.papel)
+        .onAppear {
+            guard ProcessInfo.processInfo.arguments.contains("-videoQuizIA") else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                if seleccion == nil {
+                    seleccion = preguntas[indice].correcta
+                    aciertos += 1
+                }
+            }
+        }
     }
 
     private var encabezado: some View {
